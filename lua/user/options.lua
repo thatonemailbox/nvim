@@ -4,6 +4,7 @@ local options = {
 	mouse = "a",
 	updatetime = 300,
 	shiftwidth = 4,
+	termguicolors = true, -- more color options
 	tabstop = 4,
 	cursorline = true,
 	number = true,
@@ -22,3 +23,12 @@ end
 if vim.fn.has('win32') == 1 then
   vim.o.shell = 'pwsh.exe'
 end
+
+vim.cmd([[
+	" This will enable code folding.
+	" Use the marker method of folding.
+	augroup filetype_vim
+		autocmd!
+		autocmd FileType vim, lua setlocal foldmethod=marker
+	augroup END
+]])
